@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./about.css" />
+    <title>About us</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo-container">
+            <h4> <a href="./index.html"> SunBeam Cars Inc.</a></h4>
+        </div>
+        <div class="profile-container">
+            <img src="./assets/about-us-22.png" alt="profile-icon" class="profile-icon" />
+            <h4> <a href="./about.html">About us</a></h4>
+        </div>
+    </nav>
+
+    <div class="line-container">
+        <!-- <svg viewBox="0 0 1080 1586" fill="none" preserveAspectRatio="xMidYMax">
+            <path id="Path_2" data-name="Path 2" d="M902-242V180.893H820.634l-10.72,5.316L778.52,228.425l.383,61.291H805.32s-1.149,19,24.119,18.372,26.034-18.372,26.034-18.372H950.8s3.063,18.372,22.205,18.372,26.8-18.372,26.8-18.372h26.034V248.047L973.007,232.1l-32.925-47.532-11.1-4.065H902l-.332,1012.078h0v-10.036" transform="translate(-362 242)" fill="none" stroke="#000" stroke-width="5"/>
+            <path id="Path_3" data-name="Path 3" d="M901.182,1510.915a104.462,104.462,0,0,1,18.539,3.779c9.143,2.724,19.988,7.519,26.594,15.564,13.592,16.555,18.123,22.828,18.3,51.232s-33.458,48.444-33.458,48.444-29.45,15.161-57.157,0-32.586-45.133-32.586-45.133-5.751-32.587,13.592-50.361,28.4-21.434,44.088-22.305,2.091,0,2.091,0v123.376l62.211-63.779H841.411l58.725-57.038,63.256,56.167L856.572,1614.6l43.565-97.934L945.1,1531.3l-86.955,81.553" transform="translate(-362.432 -78.287)" fill="none" stroke="#000" stroke-width="5"/>
+        </svg> -->
+
+        <svg viewBox="0 0 252.325 1586.047" fill="none" preserveAspectRatio="xMidYMax">
+            <path id="Path_2" data-name="Path 2"
+                d="M902-242V180.893H820.634l-10.72,5.316L778.52,228.425l.383,61.291H805.32s-1.149,19,24.119,18.372,26.034-18.372,26.034-18.372H950.8s3.063,18.372,22.205,18.372,26.8-18.372,26.8-18.372h26.034V248.047L973.007,232.1l-32.925-47.532-11.1-4.065H902l-.332,1012.078.006.015c.539,4.38,27.11,72.286,61.915,41.459,34.839-30.858,31.355-109.992,15.927-94.066S885.946,1304.231,853.1,1265.907s-11.447-97.381,13.936-73.327,46.784,144.5,46.784,144.5v6.968"
+                transform="translate(-776.015 242)" fill="none" stroke="#000" stroke-width="5" />
+        </svg>
+    </div>
+    <section class="one">
+        <h1 class="scroll" data-rate=".4" data-direction="vertical">About us (...or just, me?)</h1>
+        <p>My name is Anastasia and I am a first-year student at Business Academy in Aarhus.</p>
+    </section>
+
+    <section class="two">
+        <h1 class="scroll" data-rate=".2" data-direction="vertical">This is the coolest thing I've ever done!</h1>
+        <!-- <p>Anastasia Bunduc</p> -->
+        <p>I'm studying Multimedia Design and Communication.
+            <br>I'm very excited about programming and this scrolling
+            <br>SVG line was very fun to create.
+            <br>This whole project was very interesting and fun to do.
+            <br>I feel like I've learned a lot about JavaScript
+            <br>and this made me want to choose
+            Web Development as the elective
+            in the third semester.
+            <br> Of course, there are still many things that I don't know, but I am excited about learning new things.
+        </p>
+
+    </section>
+
+
+    <script>
+
+        let path = document.querySelector('path')
+        let pathLength = path.getTotalLength()
+
+        path.style.strokeDasharray = pathLength + ' ' + pathLength;
+        path.style.strokeDashoffset = pathLength;
+
+        window.addEventListener('scroll', () => {
+            //what % down is it?
+
+            var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+            //Length to offset the dashes
+            var drawLength = pathLength * scrollPercentage;
+
+            //Draw in reverse
+            path.style.strokeDashoffset = pathLength - drawLength;
+
+            const target = document.querySelectorAll('.scroll');
+
+            var index = 0, length = target.length;
+            for (index; index < length; index++) {
+                var pos = window.pageYOffset * target[index].dataset.rate;
+
+                if (target[index].dataset.direction === 'vertical') {
+                    target[index].style.transform = 'translate3d(0px, ' + pos + 'px, 0px)';
+                } else {
+                    var posX = window.pageYOffset * target[index].dataset.ratex;
+                    var posY = window.pageYOffset * target[index].dataset.ratey;
+
+                    target[index].style.transform = 'translate3d(' + posX + 'px, ' + posY + 'px, 0px)';
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
