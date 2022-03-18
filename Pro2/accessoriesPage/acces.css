@@ -73,7 +73,7 @@ nav {
 /* /////////////////////main content///////////////////////////// */
 /* /////////////////////////////////////////////////////////// */
 .logosection {
-  background-image: url("/assets/logosection.png");
+  background-image: url("../assets/logosection.png");
   background-size: cover;
   background-position: center;
   width: 100%;
